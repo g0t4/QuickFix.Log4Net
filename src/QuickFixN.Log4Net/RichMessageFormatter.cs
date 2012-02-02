@@ -2,17 +2,14 @@ namespace QuickFix.Log4Net
 {
 	using System;
 	using System.Linq;
-	using DataDictionary;
 
 	public class RichMessageFormatter
 	{
-		public readonly DataDictionary SessionDataDictionary;
 		private readonly DataDictionaryLookup _DataDictionaryLookup;
 
-		public RichMessageFormatter(DataDictionary sessionDataDictionary)
+		public RichMessageFormatter(SessionID sessionId)
 		{
-			SessionDataDictionary = sessionDataDictionary;
-			_DataDictionaryLookup = DataDictionaryLookup.Instance;
+			_DataDictionaryLookup = DataDictionaryLookup.InstanceBySessionProvider(sessionId);
 		}
 
 		public const char TagSeparator = '\x01';
@@ -49,13 +46,13 @@ namespace QuickFix.Log4Net
 				case 35:
 					return FormatMsgTypeValue(value);
 				default:
-					return value;
+					return GetTagValueTranslated(tagId, value);
 			}
 		}
 
 		private string FormatMsgTypeValue(string msgType)
 		{
-			var name = _DataDictionaryLookup.GetName(msgType);
+			var name = _DataDictionaryLookup.GetMessageName(msgType);
 			if (string.IsNullOrWhiteSpace(name))
 			{
 				return msgType;
@@ -70,19 +67,23 @@ namespace QuickFix.Log4Net
 
 		private string GetTagName(int tagId)
 		{
-			var tag = GetTag(tagId);
+			var tag = _DataDictionaryLookup.GetField(tagId);
 			return tag == null
 			       	? "Undefined tag"
 			       	: tag.Name;
 		}
 
-		private DDField GetTag(int tagId)
+		private string GetTagValueTranslated(int tagId, string value)
 		{
-			if (!SessionDataDictionary.FieldsByTag.ContainsKey(tagId))
+			var tag = _DataDictionaryLookup.GetField(tagId);
+			if (tag == null)
 			{
-				return null;
+				return value;
 			}
-			return SessionDataDictionary.FieldsByTag[tagId];
+			var description = tag.GetValueDescription(value);
+			return string.IsNullOrWhiteSpace(description)
+			       	? value
+			       	: description + "[" + value + "]";
 		}
 	}
 }

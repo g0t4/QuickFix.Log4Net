@@ -26,13 +26,7 @@ namespace QuickFix.Log4Net
 			}
 			try
 			{
-				var session = Session.LookupSession(_SessionId);
-				if (session == null)
-				{
-					FormattingLog.Error("No session found for session: " + _SessionId);
-					return @string;
-				}
-				return new RichMessageFormatter(session.SessionDataDictionary).Format(@string);
+				return new RichMessageFormatter(_SessionId).Format(@string);
 			}
 			catch (Exception exception)
 			{

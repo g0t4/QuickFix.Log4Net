@@ -1,8 +1,7 @@
 ﻿namespace Tests
 {
-	using System;
 	using NUnit.Framework;
-	using QuickFix.DataDictionary;
+	using QuickFix;
 	using QuickFix.Log4Net;
 
 	[TestFixture]
@@ -18,7 +17,6 @@
 
 			Expect(formatted, Is.EqualTo("BodyLength[9]=8"));
 		}
-
 
 		[Test]
 		public void Format_TwoTags_Formats()
@@ -75,17 +73,23 @@
 			Expect(formatted, Is.EqualTo("MsgType[35]=10000"));
 		}
 
+		[Test]
+		public void Format_WithFieldValues_ShowsFieldValue()
+		{
+			var message = "201=0";
+			var formatter = GetRichMessageFormatter();
+
+			var formatted = formatter.Format(message);
+
+			Expect(formatted, Is.EqualTo("PutOrCall[201]=PUT[0]"));
+		}
+
 		private const string Fix42DataDictionary = @"..\spec\fix\FIX42.xml";
 
 		private static RichMessageFormatter GetRichMessageFormatter()
 		{
-			DataDictionaryLookup.Instance.Load(Fix42DataDictionary);
-			return new RichMessageFormatter(GetSessionDataDictionaryFix42());
-		}
-
-		private static DataDictionary GetSessionDataDictionaryFix42()
-		{
-			return new DataDictionary(Fix42DataDictionary);
+			DataDictionaryLookup.Default.Load(Fix42DataDictionary);
+			return new RichMessageFormatter(default(SessionID));
 		}
 	}
 }
