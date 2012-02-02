@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B94002FC-14C2-4668-9AB8-B82FD9C2F51A}</ProjectGuid>
+    <ProjectGuid>{B4F64B25-A9B7-4847-81AE-7C84D8E8F465}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>QuickFix.Log4Net</RootNamespace>
-    <AssemblyName>QuickFix.Log4Net</AssemblyName>
+    <AssemblyName>QuickFixN.Log4Net</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\build\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\build\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -34,11 +34,8 @@
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="quickfix_net">
-      <HintPath>..\packages\QuickFix.1.13.3\lib\net40\quickfix_net.dll</HintPath>
-    </Reference>
-    <Reference Include="quickfix_net_messages">
-      <HintPath>..\packages\QuickFix.1.13.3\lib\net40\quickfix_net_messages.dll</HintPath>
+    <Reference Include="QuickFix">
+      <HintPath>..\packages\QuickFixN.1.1.0\lib\net20\QuickFix.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,18 +46,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\QuickFix.Log4Net\Log4NetLogBase.cs">
+      <Link>Log4NetLogBase.cs</Link>
+    </Compile>
+    <Compile Include="..\QuickFix.Log4Net\RichMessageFormatter.cs">
+      <Link>RichMessageFormatter.cs</Link>
+    </Compile>
+    <Compile Include="..\QuickFix.Log4Net\TagLookup.cs">
+      <Link>TagLookup.cs</Link>
+    </Compile>
     <Compile Include="Log4NetLog.cs" />
-    <Compile Include="Log4NetLogBase.cs" />
     <Compile Include="Log4NetLogFactory.cs" />
-    <Compile Include="RichMessageFormatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TagLookup.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="FixTags.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="QuickFixN.Log4Net.nuspec" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\QuickFix.Log4Net\FixTags.txt">
+      <Link>FixTags.txt</Link>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -9,14 +9,7 @@
 			RichMessageLogging = true;
 		}
 
-		public virtual Log create()
-		{
-			var log = new Log4NetLog();
-			log.RichMessageLogging = RichMessageLogging;
-			return log;
-		}
-
-		public virtual Log create(SessionID sessionId)
+		public virtual Log Create(SessionID sessionId)
 		{
 			var log = new Log4NetLog(sessionId.ToString());
 			log.RichMessageLogging = RichMessageLogging;

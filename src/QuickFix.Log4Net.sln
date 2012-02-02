@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickFix.Log4Net", "QuickFi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{168830E8-E219-4312-BE4C-375D2364F270}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickFixN.Log4Net", "QuickFixN.Log4Net\QuickFixN.Log4Net.csproj", "{B4F64B25-A9B7-4847-81AE-7C84D8E8F465}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{168830E8-E219-4312-BE4C-375D2364F270}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{168830E8-E219-4312-BE4C-375D2364F270}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{168830E8-E219-4312-BE4C-375D2364F270}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4F64B25-A9B7-4847-81AE-7C84D8E8F465}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4F64B25-A9B7-4847-81AE-7C84D8E8F465}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4F64B25-A9B7-4847-81AE-7C84D8E8F465}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4F64B25-A9B7-4847-81AE-7C84D8E8F465}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

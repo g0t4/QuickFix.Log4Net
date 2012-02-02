@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>QuickFixN.Log4Net</id>
+    <version>$version$</version>
+    <authors>https://github.com/g0t4/QuickFix.Log4Net</authors>
+    <owners></owners>
+    <licenseUrl>https://github.com/g0t4/QuickFix.Log4Net</licenseUrl>
+    <projectUrl>https://github.com/g0t4/QuickFix.Log4Net</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Logging adapters for QuickFix/N to log4net</description>
+    <tags></tags>
+    <dependencies>
+	  <dependency id="QuickFixN" version="1.1.0" />
+	  <dependency id="log4net" version="[1.2.10]" />
+    </dependencies>
+  </metadata>
+</package>
