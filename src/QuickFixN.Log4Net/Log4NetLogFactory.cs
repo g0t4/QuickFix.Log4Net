@@ -11,7 +11,7 @@
 
 		public virtual Log Create(SessionID sessionId)
 		{
-			var log = new Log4NetLog(sessionId.ToString());
+			var log = new Log4NetLog(sessionId);
 			log.RichMessageLogging = RichMessageLogging;
 			return log;
 		}

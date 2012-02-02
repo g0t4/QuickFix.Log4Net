@@ -43,11 +43,8 @@
     <Reference Include="pnunit.framework">
       <HintPath>..\packages\NUnit.2.5.10.11092\lib\pnunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="quickfix_net">
-      <HintPath>..\packages\QuickFix.1.13.3\lib\net40\quickfix_net.dll</HintPath>
-    </Reference>
-    <Reference Include="quickfix_net_messages">
-      <HintPath>..\packages\QuickFix.1.13.3\lib\net40\quickfix_net_messages.dll</HintPath>
+    <Reference Include="QuickFix">
+      <HintPath>..\packages\QuickFixN.1.1.0\lib\net20\QuickFix.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -60,16 +57,21 @@
   <ItemGroup>
     <Compile Include="RichMessageFormaterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TagLookupTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QuickFix.Log4Net\QuickFix.Log4Net.csproj">
-      <Project>{B94002FC-14C2-4668-9AB8-B82FD9C2F51A}</Project>
-      <Name>QuickFix.Log4Net</Name>
+    <ProjectReference Include="..\QuickFixN.Log4Net\QuickFixN.Log4Net.csproj">
+      <Project>{B4F64B25-A9B7-4847-81AE-7C84D8E8F465}</Project>
+      <Name>QuickFixN.Log4Net</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DataDictionaries\customFIX42.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

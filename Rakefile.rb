@@ -26,7 +26,6 @@ task :clean do
 end
 
 task :nuget => [:build] do
-	sh "nuget pack src\\QuickFix.Log4Net\\QuickFix.Log4Net.csproj /OutputDirectory " + $nugetFeedPath
 	sh "nuget pack src\\QuickFixN.Log4Net\\QuickFixN.Log4Net.csproj /OutputDirectory " + $nugetFeedPath
 end
 

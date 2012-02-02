@@ -2,11 +2,7 @@ namespace QuickFix.Log4Net
 {
 	public class Log4NetLog : Log4NetLogBase, Log
 	{
-		public Log4NetLog()
-		{
-		}
-
-		public Log4NetLog(string sessionId)
+		public Log4NetLog(SessionID sessionId)
 			: base(sessionId)
 		{
 		}
