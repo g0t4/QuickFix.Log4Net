@@ -4,11 +4,11 @@ namespace QuickFix.Log4Net
 	using System.Linq;
 	using System.Xml;
 
-	public class MessageNameProvider : Dictionary<string, string>
+	public class DataDictionaryLookup : Dictionary<string, string>
 	{
-		public static MessageNameProvider Instance = new MessageNameProvider();
+		public static DataDictionaryLookup Instance = new DataDictionaryLookup();
 
-		static MessageNameProvider()
+		static DataDictionaryLookup()
 		{
 		}
 
@@ -29,5 +29,7 @@ namespace QuickFix.Log4Net
 			       	? this[msgType]
 			       	: null;
 		}
+
+		// todo enum options on fields, cuz of course quickfix/N didn't load this... common guys!  sounds like time to send them a pull request
 	}
 }

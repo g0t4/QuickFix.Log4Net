@@ -79,7 +79,7 @@
 
 		private static RichMessageFormatter GetRichMessageFormatter()
 		{
-			MessageNameProvider.Instance.Load(Fix42DataDictionary);
+			DataDictionaryLookup.Instance.Load(Fix42DataDictionary);
 			return new RichMessageFormatter(GetSessionDataDictionaryFix42());
 		}
 

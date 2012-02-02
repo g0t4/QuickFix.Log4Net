@@ -7,12 +7,12 @@ namespace QuickFix.Log4Net
 	public class RichMessageFormatter
 	{
 		public readonly DataDictionary SessionDataDictionary;
-		private readonly MessageNameProvider _MessageNameProvider;
+		private readonly DataDictionaryLookup _DataDictionaryLookup;
 
 		public RichMessageFormatter(DataDictionary sessionDataDictionary)
 		{
 			SessionDataDictionary = sessionDataDictionary;
-			_MessageNameProvider = MessageNameProvider.Instance;
+			_DataDictionaryLookup = DataDictionaryLookup.Instance;
 		}
 
 		public const char TagSeparator = '\x01';
@@ -55,7 +55,7 @@ namespace QuickFix.Log4Net
 
 		private string FormatMsgTypeValue(string msgType)
 		{
-			var name = _MessageNameProvider.GetName(msgType);
+			var name = _DataDictionaryLookup.GetName(msgType);
 			if (string.IsNullOrWhiteSpace(name))
 			{
 				return msgType;
@@ -70,11 +70,19 @@ namespace QuickFix.Log4Net
 
 		private string GetTagName(int tagId)
 		{
+			var tag = GetTag(tagId);
+			return tag == null
+			       	? "Undefined tag"
+			       	: tag.Name;
+		}
+
+		private DDField GetTag(int tagId)
+		{
 			if (!SessionDataDictionary.FieldsByTag.ContainsKey(tagId))
 			{
-				return "Undefined tag";
+				return null;
 			}
-			return SessionDataDictionary.FieldsByTag[tagId].Name;
+			return SessionDataDictionary.FieldsByTag[tagId];
 		}
 	}
 }

@@ -49,7 +49,7 @@
     <Compile Include="Log4NetLog.cs" />
     <Compile Include="Log4NetLogBase.cs" />
     <Compile Include="Log4NetLogFactory.cs" />
-    <Compile Include="MessageNameProvider.cs" />
+    <Compile Include="DataDictionaryLookup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RichMessageFormatter.cs" />
   </ItemGroup>
